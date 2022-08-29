@@ -1,0 +1,17 @@
+[
+    {
+        "uuid": "d2beaf60-d721-4caa-bfaf-49de281def8e",
+        "name": "pepsi",
+        "price": 1.49
+    },
+    {
+        "uuid": "44af3e1f-1f73-4920-81ac-5de8a3a89140",
+        "name": "chips",
+        "price": 1.99
+    },
+    {
+        "uuid": "1d9b8b19-e278-4666-bf63-21bfa1f5dab7",
+        "name": "bacardi",
+        "price": 12.49
+    }
+]

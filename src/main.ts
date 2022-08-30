@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // global configurations
   // exception handler
   const httpAdapterHost = app.get(HttpAdapterHost);
@@ -14,7 +14,11 @@ async function bootstrap() {
   const swaggerConfiguration = new DocumentBuilder()
     .setTitle('Commercify')
     .setDescription('Ecommerce Application using nestjs & mongodb/mongoose')
-    .setContact('@CarlosFranciscoAnjos', '/', 'carlos.francisco.anjos@outlook.com')
+    .setContact(
+      '@CarlosFranciscoAnjos',
+      '/',
+      'carlos.francisco.anjos@outlook.com',
+    )
     .setVersion('2.0')
     .build();
   const swaggerDocument = SwaggerModule.createDocument(

@@ -1,3 +1,4 @@
+import { json } from 'stream/consumers';
 import * as winston from 'winston';
 const { combine, timestamp, printf } = winston.format;
 
@@ -10,9 +11,10 @@ const logger = winston.createLogger({
   format: combine(timestamp(), logFormat),
   defaultMeta: { service: 'application' },
   transports: [
-    new winston.transports.Console(),
+    new winston.transports.Console({ level: 'debug' }),
     new winston.transports.File({ filename: 'info.log', level: 'info' }),
+    new winston.transports.File({ filename: 'debug.log', level: 'debug' }),
   ],
 });
 
-export default logger
+export default logger;

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export abstract class Item {
+export class Item {
   @ApiProperty()
   uuid?: string;
   @ApiProperty()

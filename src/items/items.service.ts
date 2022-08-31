@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { randomUUID } from 'crypto';
 
 import { Model } from 'mongoose';
 import { Item } from './interfaces/item.interface';

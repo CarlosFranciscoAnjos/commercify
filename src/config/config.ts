@@ -5,18 +5,19 @@ export default () => ({
     db: process.env.MONGO_DB,
     user: process.env.MONGO_USER,
     secret: process.env.MONGO_SECRET,
-    get uri() {
+    get url() {
       return `mongodb://${this.user}:${this.secret}@${this.host}:${this.port}/${this.db}?authsource=admin`;
     },
   },
-  postgres : {
+  postgres: {
+    driver: process.env.POSTGRES_DRIVER,
     host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_HOST_PORT,
-    db: process.env.POSTGRES_HOST_DB,
-    user: process.env.POSTGRES_HOST_USER,
-    secret: process.env.POSTGRES_HOST_SECRET,
-    get uri() {
-      return `postgresql://${this.user}:${this.secret}@${this.host}:${this.port}/${this.db}`;
+    port: process.env.POSTGRES_PORT,
+    db: process.env.POSTGRES_DB,
+    user: process.env.POSTGRES_USER,
+    secret: process.env.POSTGRES_SECRET,
+    get url() {
+      return `${this.driver}://${this.user}:${this.secret}@${this.host}:${this.port}/${this.db}`;
     },
-  }
+  },
 });

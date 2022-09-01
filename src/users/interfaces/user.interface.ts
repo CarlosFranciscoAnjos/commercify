@@ -7,4 +7,6 @@ export class User {
   email: string;
   @ApiProperty()
   hash: string;
+  @ApiProperty()
+  role: string;
 }

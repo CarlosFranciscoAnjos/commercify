@@ -5,7 +5,6 @@ import {
   MongooseOptionsFactory,
 } from '@nestjs/mongoose';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
 import logger from 'src/app.logger';
 

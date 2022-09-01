@@ -10,4 +10,6 @@ export class UserSchema {
   email: string;
   @Column()
   hash: string;
+  @Column()
+  role: string;
 }

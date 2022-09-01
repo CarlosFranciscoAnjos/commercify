@@ -23,22 +23,22 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const { uuid, email, password } = createUserDto;
-    const user = {
-      uuid: uuid,
-      email: email,
-      hash: await CryptService.hash(password),
-    };
+    const { password, ...user } = createUserDto;
+    user['hash'] = await CryptService.hash(password);
     return await this.usersRepository.save(user);
   }
 
-  // async delete(uuid: string): Promise<User> {
-  //   return await this.usersRepository.findOneAndRemove({ uuid: uuid });
-  // }
+  async delete(uuid: string): Promise<User> {
+    const user = await this.findOne(uuid);
+    if (!user) return null;
+    await this.usersRepository.delete(user);
+    return user;
+  }
 
-  // async update(uuid: string, user: User): Promise<User> {
-  //   return await this.usersRepository.findOneAndUpdate({ uuid: uuid }, user, {
-  //     returnOriginal: false,
-  //   });
-  // }
+  async update(uuid: string, updateUserDto: CreateUserDto): Promise<User> {
+    const user = await this.findOne(uuid);
+    if (!user) return null;
+    await this.usersRepository.update(user, updateUserDto);
+    return user;
+  }
 }

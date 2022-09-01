@@ -25,8 +25,6 @@ export class ItemsService {
   }
 
   async update(uuid: string, item: Item): Promise<Item> {
-    return await this.itemModel.findOneAndUpdate({ uuid: uuid }, item, {
-      returnOriginal: false,
-    });
+    return await this.itemModel.findOneAndUpdate({ uuid: uuid }, item);
   }
 }

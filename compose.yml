@@ -18,7 +18,7 @@ services:
       retries: 2
 
   mongo:
-    image: mongo:latest
+    image: mongo:6.0.1
     container_name: mongo
     ports:
       - 27017:27017
@@ -29,7 +29,7 @@ services:
        - mongo-data:/data/db
 
   mongo-express:
-    image: mongo-express:latest
+    image: mongo-express:0.54.0
     container_name: mongo-express
     ports:
       - 8081:8081
@@ -41,7 +41,7 @@ services:
       - mongo
 
   postgres:
-    image: postgres:latest
+    image: postgres:alpine3.16
     container_name: postgres
     ports:
       - "5432:5432"
@@ -55,7 +55,7 @@ services:
 
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:6.13
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -66,6 +66,12 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     depends_on:
       - postgres
+
+  redis-stack:
+    container_name: redis-stack
+    image: redis/redis-stack:7.0.2-RC2
+    ports: 
+      - "6379:6379"
 
 volumes:
   mongo-data:

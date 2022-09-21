@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import config from './config/config';
 import { AppController } from './app.controller';
@@ -13,7 +14,6 @@ import { LoggerMiddleware } from './app.logger-middleware';
 import { MongoConfig, PostgresConfig } from './config/database.config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -35,7 +35,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     StocksModule,
     SalesModule,
     UsersModule,
-    AuthModule
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

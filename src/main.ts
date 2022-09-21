@@ -1,5 +1,8 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as session from 'express-session';
+import passport from 'passport';
+
 import { AllExceptionsFilter } from './app.exception-filter';
 import { AppModule } from './app.module';
 
@@ -26,6 +29,20 @@ async function bootstrap() {
     swaggerConfiguration,
   );
   SwaggerModule.setup('/swagger', app, swaggerDocument);
+  // sessions w/ passport
+  app.use(
+    session({
+      secret: 'session-secret',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 600_000,
+      },
+      // store: undefined
+    }),
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // start application
   await app.listen(3000);

@@ -4,9 +4,11 @@ import { BasicStrategy } from './basic.strategy';
 
 import { AuthService } from './auth.service';
 import { UsersModule } from 'src/users/users.module';
+import { SessionSerializer } from './session.serializer';
+import { LocalStrategy } from './local.strategy';
 
 @Module({
-  imports: [UsersModule, PassportModule],
-  providers: [AuthService, BasicStrategy],
+  imports: [UsersModule, PassportModule.register({ session: true })],
+  providers: [AuthService, BasicStrategy, LocalStrategy, SessionSerializer],
 })
 export class AuthModule {}

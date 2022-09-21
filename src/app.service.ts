@@ -9,4 +9,8 @@ export class AppService {
   getStatus(): string {
     return 'Ok';
   }
+
+  logIn(): string {
+    return 'Logged In';
+  }
 }

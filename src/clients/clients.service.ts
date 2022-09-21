@@ -20,14 +20,17 @@ export class ClientsService {
   }
 
   async create(client: Client): Promise<Client> {
+    // create user w/ role of 'client'
     return await this.clientModel.create(client);
   }
 
   async delete(uuid: string): Promise<Client> {
+    // ensure consistency w/ users
     return await this.clientModel.findOneAndRemove({ uuid: uuid });
   }
 
   async update(uuid: string, client: Client): Promise<Client> {
+    // ensure consistency w/ users
     return await this.clientModel.findOneAndUpdate({ uuid: uuid }, client, {
       returnOriginal: false,
     });

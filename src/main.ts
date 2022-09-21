@@ -1,7 +1,7 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as session from 'express-session';
-import passport from 'passport';
+import * as passport from 'passport';
 
 import { AllExceptionsFilter } from './app.exception-filter';
 import { AppModule } from './app.module';

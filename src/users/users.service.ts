@@ -6,13 +6,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './interfaces/user.interface';
 import { UserSchema } from './schemas/user.schema';
 import { CryptService } from 'src/auth/auth.crypt';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UserSchema)
     private usersRepository: Repository<UserSchema>,
-  ) {}
+  ) { }
 
   async findAll(): Promise<User[]> {
     return await this.usersRepository.find();
@@ -24,6 +25,7 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const { password, ...user } = createUserDto;
+    user.uuid = user.uuid ?? randomUUID();
     user['hash'] = await CryptService.hash(password);
     return await this.usersRepository.save(user);
   }

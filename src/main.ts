@@ -1,5 +1,7 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
+
 import redis from 'ioredis';
 import * as session from 'express-session';
 import * as passport from 'passport';
@@ -12,6 +14,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // global configurations
+  const configService = app.get<ConfigService>(ConfigService);
 
   // exception handler
   const httpAdapterHost = app.get(HttpAdapterHost);
@@ -35,7 +38,8 @@ async function bootstrap() {
   SwaggerModule.setup('/swagger', app, swaggerDocument);
 
   // redis
-  const redisClient = new redis(6379, 'localhost');
+  const redisConfig = configService.get('redis');
+  const redisClient = new redis(redisConfig.port, redisConfig.host);
   const redisStore = connectRedis(session);
 
   // sessions w/ passport

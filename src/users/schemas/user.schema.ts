@@ -6,7 +6,7 @@ export class UserSchema {
   id: number;
   @Column({ unique: true })
   uuid?: string;
-  @Column({ unique: true})
+  @Column({ unique: true })
   email: string;
   @Column()
   hash: string;

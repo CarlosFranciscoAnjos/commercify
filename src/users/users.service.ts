@@ -13,7 +13,7 @@ export class UsersService {
   constructor(
     @InjectRepository(UserSchema)
     private usersRepository: Repository<UserSchema>,
-  ) { }
+  ) {}
 
   async findAll(): Promise<User[]> {
     return await this.usersRepository.find();

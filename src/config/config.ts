@@ -20,4 +20,8 @@ export default () => ({
       return `${this.driver}://${this.user}:${this.secret}@${this.host}:${this.port}/${this.db}`;
     },
   },
+  redis: {
+    port: process.env.REDIS_PORT,
+    host: process.env.REDIS_HOST,
+  },
 });

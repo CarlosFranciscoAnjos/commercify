@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { LoginDto } from './auth/login.dto';
 import { User } from './users/interfaces/user.interface';
 
 @Injectable()
@@ -11,8 +12,11 @@ export class AppService {
     return 'Ok';
   }
 
-  logIn(): string {
-    return 'Logged In';
+  logIn(loginDto: LoginDto): object {
+    return {
+      username: loginDto.username,
+      status: 'Ok',
+    };
   }
 
   getUserpage(sessionUser: User): object {

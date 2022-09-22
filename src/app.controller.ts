@@ -34,8 +34,8 @@ export class AppController {
   @Post('api/v1/login')
   @UseGuards(LocalGuard)
   @ApiOkResponse()
-  login(@Body() loginDto: LoginDto): string {
-    return this.appService.logIn();
+  login(@Body() loginDto: LoginDto): object {
+    return this.appService.logIn(loginDto);
   }
 
   @Get('api/v1/userpage')

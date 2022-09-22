@@ -56,6 +56,7 @@ EcommerceDemo.postman_collection.json
 
 ```
 > Configuration
+> Logging
 > Authentication
 > Users
 > Clients

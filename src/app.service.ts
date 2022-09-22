@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from './users/interfaces/user.interface';
 
 @Injectable()
 export class AppService {
@@ -12,5 +13,10 @@ export class AppService {
 
   logIn(): string {
     return 'Logged In';
+  }
+
+  getUserpage(sessionUser: User): object {
+    const { hash, ...user } = sessionUser;
+    return user;
   }
 }

@@ -1,9 +1,10 @@
-import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AuthenticatedGuard } from './auth/authenticated.guard';
 import { BasicGuard } from './auth/basic.guard';
 import { LocalGuard } from './auth/local.guard';
+import { LoginDto } from './auth/login.dto';
 
 @Controller()
 @ApiTags('App')
@@ -23,17 +24,17 @@ export class AppController {
     return this.appService.getStatus();
   }
 
-  @Get('api/v1/login')
+  @Post('api/v1/login')
   @UseGuards(LocalGuard)
   @ApiOkResponse()
-  logIn(): string {
+  login(@Body() loginDto: LoginDto): string {
     return this.appService.logIn();
   }
 
   @Get('api/v1/userpage')
   @UseGuards(AuthenticatedGuard)
   @ApiOkResponse()
-  userpage(@Request() req: any): string {
-    return req.user;
+  getUserpage(@Request() req: any): object {
+    return this.appService.getUserpage(req.user);
   }
 }

@@ -43,13 +43,15 @@ async function bootstrap() {
   const redisStore = connectRedis(session);
 
   // sessions w/ passport
+  const sessionConfig = configService.get('session');
+
   app.use(
     session({
-      secret: 'session-secret',
-      resave: false,
-      saveUninitialized: false,
+      secret: sessionConfig.secret,
+      resave: sessionConfig.resave,
+      saveUninitialized: sessionConfig.saveUninitialized,
       cookie: {
-        maxAge: 600_000,
+        maxAge: sessionConfig.maxAge,
       },
       store: new redisStore({ client: redisClient }),
     }),

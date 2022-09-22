@@ -24,4 +24,10 @@ export default () => ({
     port: process.env.REDIS_PORT,
     host: process.env.REDIS_HOST,
   },
+  session: {
+    secret: process.env.SESSION_SECRET,
+    resave: Boolean(process.env.SESSION_RESAVE),
+    saveUninitialized: Boolean(process.env.SESSION_SAVE_UNINITIALIZED),
+    maxAge: Number(process.env.SESSION_MAX_AGE),
+  },
 });

@@ -18,5 +18,5 @@ COPY . /app
 # Creates a "dist" folder with the production build
 RUN npm run build
 
-# Start the server using the production build
-CMD [ "npm", "run", "start:prod" ]
+# Start the server using the kubernetes build
+CMD [ "npm", "run", "start:kubernetes" ]

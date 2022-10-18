@@ -44,7 +44,6 @@ async function bootstrap() {
 
   // sessions w/ passport
   const sessionConfig = configService.get('session');
-
   app.use(
     session({
       secret: sessionConfig.secret,
@@ -62,4 +61,5 @@ async function bootstrap() {
   // start application
   await app.listen(3000);
 }
+
 bootstrap();

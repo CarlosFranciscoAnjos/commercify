@@ -9,6 +9,22 @@
 docker compose build .
 docker compose up
 ```
+
+## Setup w/ kubernetes
+```
+# apply configuration
+kubectl apply -f kubernetes
+
+# delete configuration
+kubectl delete -f kubernetes
+
+# point to minikube internal docker
+eval $(minikube docker-env)
+
+# open shell in pod
+kubectl exec --stdin --tty <pod-id> -- /bin/bash
+```
+
 ---
 
 ## Api Guide

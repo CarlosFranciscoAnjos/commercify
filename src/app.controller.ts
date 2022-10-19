@@ -9,7 +9,6 @@ import {
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AuthenticatedGuard } from './auth/authenticated.guard';
-import { BasicGuard } from './auth/basic.guard';
 import { LocalGuard } from './auth/local.guard';
 import { LoginDto } from './auth/login.dto';
 
@@ -25,7 +24,7 @@ export class AppController {
   }
 
   @Get('api/v1/status')
-  @UseGuards(BasicGuard)
+  @UseGuards(AuthenticatedGuard)
   @ApiOkResponse()
   getStatus(): string {
     return this.appService.getStatus();

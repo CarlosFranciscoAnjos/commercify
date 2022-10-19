@@ -24,7 +24,32 @@ eval $(minikube docker-env)
 # open shell in pod
 kubectl exec --stdin --tty <pod-id> -- /bin/bash
 ```
+---
 
+## App Strcture
+
+### Resources
+```
+> Configuration
+> Logging
+> Authentication
+
+> Users
+> Clients
+> Items
+> Stocks
+> Sales
+```
+
+### Roles
+```
+ADMIN
+- create, update, read, delete -- any
+
+USER
+- get -- items, stocks, sales
+- create -- sales (client.id == user.id)
+```
 ---
 
 ## Api Guide
@@ -62,22 +87,10 @@ EcommerceDemo.postman_collection.json
 ## Improvements
 
 ```
-> Unit Tests
-> Kubernetes
-> Jenkins/Git
+> Unit Tests (jest - integration)
+> Kubernetes (database deployment - statefulset)
+> Jenkins/Git (automation - pull>build>deploy)
+> Business logic 
+    - client/user
+    - sale/stock
 ```
----
-
-## App Structure
-
-```
-> Configuration
-> Logging
-> Authentication
-> Users
-> Clients
-> Items
-> Stocks
-> Sales
-```
-----

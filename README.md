@@ -90,7 +90,6 @@ EcommerceDemo.postman_collection.json
 > Unit Tests (jest - integration)
 > Kubernetes (database deployment - statefulset)
 > Jenkins/Git (automation - pull>build>deploy)
-> Business logic 
-    - client/user
+> Business logic
     - sale/stock
 ```

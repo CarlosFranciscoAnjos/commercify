@@ -46,9 +46,9 @@ kubectl exec --stdin --tty <pod-id> -- /bin/bash
 ADMIN
 - create, update, read, delete -- any
 
-USER
+CLIENT
 - get -- items, stocks, sales
-- create -- sales (client.id == user.id)
+- create -- sales (client.id == sale.client_id)
 ```
 ---
 
